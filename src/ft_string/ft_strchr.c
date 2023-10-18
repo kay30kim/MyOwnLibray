@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:15:00 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/17 14:17:54 by kyung-ki         ###   ########.fr       */
+/*   Created: 2023/10/17 14:21:27 by kyung-ki          #+#    #+#             */
+/*   Updated: 2023/10/18 17:13:24 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-typedef long unsigned int	t_size_t;
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (&s[i]);
+	}
+	return (0)
+}
