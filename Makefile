@@ -6,6 +6,6 @@ all : $(NAME)
 
 clean : rm -rf *.o
 
-fclaen :
+fclean :
 
 re : 
