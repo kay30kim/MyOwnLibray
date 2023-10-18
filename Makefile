@@ -16,3 +16,18 @@ clean : rm -rf *.o
 fclaen :
 
 re : 
+
+$(NAME):
+	$(Compiler) $(CmpFlags) -c $(CFILES) -I./
+	ar -rc $(OUTN) $(OFILES)
+
+all: $(NAME)
+
+clean:
+	rm -f $(NAME)
+	rm -f $(OFILES)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
