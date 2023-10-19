@@ -6,14 +6,14 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:15:00 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 13:38:20 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:49:03 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdlib.h>>
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef long unsigned int	t_size_t;

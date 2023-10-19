@@ -6,12 +6,12 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:16 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 14:18:50 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:27:33 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+// *dst = "ello" *src = "hello"
 void	*ft_memcpy(void *dst, const void *src, t_size_t n)
 {
 	t_size_t	i;
