@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:01:22 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 17:55:27 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:44:59 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *s, t_size_t n) 
 {
-	char	*ptr = (char *)s;
-	int		i;
+	char		*ptr = (char *)s;
+	t_size_t	i;
 
 	i = 0;
 	while (i < n)

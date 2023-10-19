@@ -13,11 +13,12 @@ OBJS	= $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
+	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) libft_main_test.c
 # 	$(CC) $(CFLAGS) -c -I./
 # 	ar -rc $(OUTN) $(OFILES)
 
-clean : rm -rf *.o
+clean:
+	rm -f $(OBJS)
 
 fclean : clean
 	rm -f $(NAME)

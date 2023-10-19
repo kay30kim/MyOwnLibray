@@ -6,25 +6,22 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:34 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/17 14:21:35 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:43:47 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr1;
-	unsigned char	*ptr2;
+	size_t	i;
 
-	ptr1 = (unsigned char *)s1;
-	ptr2 = (unsigned char *)s2;
-	while (n && *ptr1 && *ptr1 == *ptr2)
+	i = 0;
+	while (i < n && s1[i] && s2[i])
 	{
-		++ptr1;
-		++ptr2;
-		--n;
+		if (s1[i] - s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	if (n)
-		return (*ptr1 - *ptr2);
-	else
-		return (0);
+	return (s1[i] - s2[i]);
 }
