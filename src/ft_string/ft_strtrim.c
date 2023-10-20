@@ -6,21 +6,20 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:52 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/20 12:31:52 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:21:02 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "../../include/libft.h"
 
-int	ft_setcheck(char c, char const *set)
+int	ft_c_in_set(char c, char const *set)
 {
 	int	i;
 
 	i = 0;
 	while (set[i])
 	{
-		if (set[i++] == c)
+		if (set[i] == c)
 			return (1);
 	}
 	return (0);
@@ -28,29 +27,41 @@ int	ft_setcheck(char c, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	int		start;
-	int		end;
+	char	*tmp;
+	size_t	begin;
+	size_t	end;
 	int		i;
 
-	i = 0;
-	start = 0;
-	if (s1 == 0 || set == 0)
-		return (0);
-	end = (int)ft_strlen(s1);
-	while (s1[start] && ft_setcheck(s1[start], set))
-		start++;
-	while (end > start && ft_setcheck(s1[end - 1], set))
+	begin = 0;
+	while (s[begin] && ft_c_in_set(s1[begin], set))
+		begin++;
+	while (end > start && ft_c_in_set(s1[end], set))
 		end--;
-	str = (char *)malloc(sizeof(char) * (end - start + 1));
-	if (!str)
+	tmp = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (!tmp)
 		return (0);
-	while (start < end)
+	i = 0;
+	while (begin < end)
 	{
-		str[i] = s1[start];
-		i++;
-		start++;
+		tmp[i++] = s1[begin++];
 	}
-	str[i] = '\0';
-	return (str);
+	tmp[i] = '\0';
+	return (tmp);
 }
+/*
+int	main(void)
+{
+	const char	*input = "   Hello, World!   ";
+	const char	*charset = " ";
+	char		*trimmed;
+
+	trimmed = ft_strtrim(input, charset);
+	if (trimmed != NULL)
+	{
+		printf("Original: \"%s\"\n", input);
+		printf("Trimmed: \"%s\"\n", trimmed);
+		free(trimmed);
+	}
+	return (0);
+}
+*/
