@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:15:00 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 13:38:20 by kyung-ki         ###   ########.fr       */
+/*   Created: 2023/10/20 12:26:10 by kyung-ki          #+#    #+#             */
+/*   Updated: 2023/10/20 12:26:10 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-#include <stdlib.h>>
-#include <stdlib.h>
-
-typedef struct s_list
+void	*ft_calloc(size_t count, size_t size)
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	void	*ptr;
 
-typedef long unsigned int	t_size_t;
-size_t
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
-int		ft_isascii(int c);
-
-#endif
+	ptr = malloc(count * size);
+	if (ptr == 0)
+		return (ptr);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}

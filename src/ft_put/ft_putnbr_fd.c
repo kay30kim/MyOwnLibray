@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:15:00 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 13:38:20 by kyung-ki         ###   ########.fr       */
+/*   Created: 2023/10/20 12:28:52 by kyung-ki          #+#    #+#             */
+/*   Updated: 2023/10/20 12:28:52 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-#include <stdlib.h>>
-#include <stdlib.h>
-
-typedef struct s_list
+void	ft_putnbr_fd(int n, int fd)
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	long int	n2;
 
-typedef long unsigned int	t_size_t;
-size_t
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
-int		ft_isascii(int c);
-
-#endif
+	n2 = n;
+	if (n2 < 0)
+	{
+		n2 = (n2 * -1);
+		write(fd, "-", 1);
+	}
+	if (n2 > 9)
+	{
+		ft_putnbr_fd(n2 / 10, fd);
+		ft_putchar_fd((n2 % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(n2 + '0', fd);
+}

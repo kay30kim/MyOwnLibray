@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:15:00 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 13:38:20 by kyung-ki         ###   ########.fr       */
+/*   Created: 2023/10/20 12:32:13 by kyung-ki          #+#    #+#             */
+/*   Updated: 2023/10/20 12:32:13 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-#include <stdlib.h>>
-#include <stdlib.h>
-
-typedef struct s_list
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	char	*s2;
+	size_t	s_len;
+	size_t	end;
 
-typedef long unsigned int	t_size_t;
-size_t
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
-int		ft_isascii(int c);
-
-#endif
+	if (!s)
+		return (0);
+	s_len = ft_strlen(s);
+	end = 0;
+	if (start < s_len)
+		end = s_len - start;
+	if (end > len)
+		end = len;
+	s2 = (char *)malloc(sizeof(char) * (end + 1));
+	if (!s2)
+		return (0);
+	ft_strlcpy(s2, s + start, end + 1);
+	return (s2);
+}

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:15:00 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 13:38:20 by kyung-ki         ###   ########.fr       */
+/*   Created: 2023/10/20 12:33:31 by kyung-ki          #+#    #+#             */
+/*   Updated: 2023/10/20 12:33:31 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-#include <stdlib.h>>
-#include <stdlib.h>
-
-typedef struct s_list
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	t_list	*aux_lst;
 
-typedef long unsigned int	t_size_t;
-size_t
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
-int		ft_isascii(int c);
-
-#endif
+	if (*lst)
+	{
+		while (*lst)
+		{
+			aux_lst = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = aux_lst;
+		}
+		*lst = 0;
+	}
+}
