@@ -6,11 +6,11 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:11 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 14:19:12 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:49:30 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 
 void	*ft_memchr(const void *s, int c, t_size_t n)
 {

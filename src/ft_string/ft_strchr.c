@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:27 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/18 17:13:24 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:44:34 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return (&s[i]);
+			return ((char *)&s[i]);
+		i++;
 	}
-	return (0)
+	return (0);
 }

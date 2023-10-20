@@ -1,13 +1,13 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -I$(INCLUDES)
 NAME=libft.a
 INCLUDES=include/
 SRC_DIR=src/
-SRCS=ft_is_check/ft_isalnum.c ft_is_check/ft_isalpha.c ft_is_check/ft_isascii.c ft_is_check/ft_isprint.c ft_is_check/ft_isdigit.c \
- ft_memory/ft_memchr.c ft_memory/ft_memcmp.c ft_memory/ft_memcpy.c ft_memory/ft_memset.c \
- ft_other/ft_bzero.c \
- ft_string/ft_strlcat.c ft_string/ft_strchr.c ft_string/ft_strlcpy.c ft_string/ft_strlen.c ft_string/ft_strncmp.c ft_string/ft_strnstr.c ft_string/ft_strrchr.c \
- ft_is_check/ft_atoi.c ft_to/ft_tolower.c ft_to/ft_toupper.c
+SRCS=src/ft_is_check/ft_isalnum.c src/ft_is_check/ft_isalpha.c src/ft_is_check/ft_isascii.c src/ft_is_check/ft_isprint.c src/ft_is_check/ft_isdigit.c \
+ src/ft_memory/ft_memchr.c src/ft_memory/ft_memcmp.c src/ft_memory/ft_memcpy.c src/ft_memory/ft_memset.c \
+ src/ft_other/ft_bzero.c \
+ src/ft_string/ft_strlcat.c src/ft_string/ft_strchr.c src/ft_string/ft_strlcpy.c src/ft_string/ft_strlen.c src/ft_string/ft_strncmp.c src/ft_string/ft_strnstr.c src/ft_string/ft_strrchr.c \
+ src/ft_to/ft_atoi.c src/ft_to/ft_tolower.c src/ft_to/ft_toupper.c
 OBJS	= $(SRCS:.c=.o)
 
 # SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCS)))
@@ -21,19 +21,17 @@ clean : rm -rf *.o
 
 fclean :
 
-re : 
+all : $(NAME)
 
 $(NAME):
-	$(Compiler) $(CmpFlags) -c $(CFILES) -I./
-	ar -rc $(OUTN) $(OFILES)
-
-all: $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) libft_main_test.c
+# 	$(CC) $(CFLAGS) -c -I./
+# 	ar -rc $(OUTN) $(OFILES)
 
 clean:
-	rm -f $(NAME)
-	rm -f $(OFILES)
+	rm -f $(OBJS)
 
-fclean: clean
+fclean : clean
 	rm -f $(NAME)
 
-re: fclean all
+re : fclean all
