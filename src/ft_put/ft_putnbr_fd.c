@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:28:52 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/20 12:28:52 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:49:13 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int	n2;
+	long long num;
 
-	n2 = n;
-	if (n2 < 0)
+	num = n;
+	if (num < 0)
 	{
-		n2 = (n2 * -1);
+		num = -num;
 		write(fd, "-", 1);
 	}
-	if (n2 > 9)
+	if (num > 9)
 	{
-		ft_putnbr_fd(n2 / 10, fd);
-		ft_putchar_fd((n2 % 10) + '0', fd);
+		ft_putnbr_fd(num/10, fd);
+		ft_putchar_fd((num % 10) + '0', fd);
 	}
 	else
-		ft_putchar_fd(n2 + '0', fd);
+		ft_putchar_fd(num + '0', fd);
 }

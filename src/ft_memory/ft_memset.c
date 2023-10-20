@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:22 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/19 18:30:19 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:50:22 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	i;
-	char	*str;
+	size_t			i;
+	unsigned char	*str;
 	
 	i = 0;
 	str = (char *)b;
 	while (i < len)
 	{
-		str[i] = (char)c;
+		str[i] = (unsigned char)c;
 		i++;
 	}
 	return (b);
