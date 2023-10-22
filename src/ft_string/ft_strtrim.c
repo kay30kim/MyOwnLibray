@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:52 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/22 14:52:41 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:13:30 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	int		i;
 
+	if (!s1 || !set)
+		return (0);
 	begin = 0;
 	end = ft_strlen(s1);
 	while (s1[begin] && ft_c_in_set(s1[begin], set))
 		begin++;
-	while (end > begin && ft_c_in_set(s1[end], set))
+	while (end > begin && ft_c_in_set(s1[end - 1], set))
 		end--;
 	tmp = (char *)malloc(sizeof(char) * (end - begin + 1));
 	if (!tmp)

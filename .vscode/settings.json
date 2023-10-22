@@ -39,7 +39,8 @@
 		"typeinfo": "c",
 		"unordered_map": "c",
 		"utility": "c",
-		"vector": "c"
+		"vector": "c",
+		"ratio": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

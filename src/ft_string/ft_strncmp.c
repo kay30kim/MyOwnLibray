@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:34 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:33:21 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:45:51 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (i < n && s1[i] && s2[i])
 	{
 		if (s1[i] - s2[i])
-			return (s1[i] - s2[i]);
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
-	return (s1[i] - s2[i]);
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	else
+		return (0);
 }
