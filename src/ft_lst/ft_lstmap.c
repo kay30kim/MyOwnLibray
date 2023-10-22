@@ -6,9 +6,11 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:35:19 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/20 12:35:19 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/21 21:28:18 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

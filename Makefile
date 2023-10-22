@@ -1,32 +1,28 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror -I$(INCLUDES)
-NAME=libft.a
-INCLUDES=include/
-SRC_DIR=src/
-SRCS=src/ft_is_check/ft_isalnum.c src/ft_is_check/ft_isalpha.c src/ft_is_check/ft_isascii.c src/ft_is_check/ft_isprint.c src/ft_is_check/ft_isdigit.c \
- src/ft_memory/ft_memchr.c src/ft_memory/ft_memcmp.c src/ft_memory/ft_memcpy.c src/ft_memory/ft_memset.c \
- src/ft_other/ft_bzero.c \
- src/ft_string/ft_strlcat.c src/ft_string/ft_strchr.c src/ft_string/ft_strlcpy.c src/ft_string/ft_strlen.c src/ft_string/ft_strncmp.c src/ft_string/ft_strnstr.c src/ft_string/ft_strrchr.c \
- src/ft_to/ft_atoi.c src/ft_to/ft_tolower.c src/ft_to/ft_toupper.c
-OBJS	= $(SRCS:.c=.o)
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -I$(INCLUDES)
+NAME		= libft.a
+INCLUDES	= include/
+SRC_DIR		= src/
+SRCS		= $(addprefix ft_is_check/, ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c)
+SRCS		+= $(addprefix ft_lst/, $(addsuffix .c, ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize))
+SRCS		+= $(addprefix ft_memory/, ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c)
+SRCS		+= ft_other/ft_bzero.c
+SRCS		+= $(addprefix ft_put/, $(addsuffix .c, ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd))
+SRCS		+= $(addprefix ft_string/, $(addsuffix .c, ft_split ft_strchr ft_strdup ft_striteri ft_strjoin ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr ft_strrchr ft_strtrim ft_substr))
+SRCS		+= ft_to/ft_atoi.c ft_to/ft_tolower.c ft_to/ft_toupper.c
+SRC			= $(addprefix $(SRC_DIR), $(SRCS))
+OBJS		= $(SRC:.c=.o)
 
-# SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCS)))
 # $(NAME):	$(OBJ)
 # 			@$(AR) $(NAME) $(OBJ)
 # 			@ranlib $(NAME)
 
 all : $(NAME)
 
-clean : rm -rf *.o
-
-fclean :
-
-all : $(NAME)
-
 $(NAME):
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) libft_main_test.c
-# 	$(CC) $(CFLAGS) -c -I./
-# 	ar -rc $(OUTN) $(OFILES)
+	$(CC) $(CFLAGS) -c $(SRC)
+	ar -rc $(NAME) $(OBJS)
+#	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) libft_main_test.c
 
 clean:
 	rm -f $(OBJS)

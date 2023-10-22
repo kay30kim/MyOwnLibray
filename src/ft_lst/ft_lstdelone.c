@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:33:53 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/20 12:33:53 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/21 20:03:22 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst && del)
-	{	
+	if (lst)
+	{
 		del(lst->content);
 		free(lst);
 	}

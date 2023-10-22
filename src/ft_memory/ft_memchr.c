@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:11 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/19 17:49:30 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/21 19:39:13 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	*ft_memchr(const void *s, int c, t_size_t n)
 	t_size_t		i;
 
 	i = 0;
-	str = (unsigned char*)s;
+	str = (unsigned char *)s;
 	while (i < n)
 	{
 		if (str[i] == (unsigned char)c)
 			return ((char *)s + i);
-			// not sure version	: return (&((char *)s[i]))
-			// wrong version	: return (&str[i]);
 		i++;
 	}
 	return (NULL);
 }
+// not sure version	: return (&((char *)s[i]))
+// wrong version	: return (&str[i]);

@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:33:14 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/20 12:33:14 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/21 19:42:03 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (new)
-	{	
-		if (!lst)
-			*lst = new;
-		new->next = *lst;
+	{
+		new->next = lst;
 		*lst = new;
 	}
 }

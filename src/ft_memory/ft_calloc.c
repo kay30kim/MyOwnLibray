@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:26:10 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/20 15:32:28 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/21 19:39:31 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	*ft_calloc(size_t count, size_t size)
 		tmp[i] = 0;
 		i++;
 	}
-	return (void *)tmp;
+	return ((void *)tmp);
 }

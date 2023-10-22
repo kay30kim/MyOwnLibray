@@ -6,11 +6,11 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:09 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/17 14:21:10 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/21 19:42:44 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
