@@ -6,12 +6,11 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:30:06 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 21:24:27 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:37:17 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {

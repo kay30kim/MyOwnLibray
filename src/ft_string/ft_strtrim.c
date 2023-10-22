@@ -6,11 +6,11 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:52 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 21:23:28 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:52:41 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 
 int	ft_c_in_set(char c, char const *set)
 {
@@ -21,6 +21,7 @@ int	ft_c_in_set(char c, char const *set)
 	{
 		if (set[i] == c)
 			return (1);
+		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:29:15 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:35:43 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:52:50 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	ft_putstr_fd(char *s, int fd)
 	while (s[i])
 	{
 		ft_putchar_fd(s[i], fd);
+		i++;
 	}
 }

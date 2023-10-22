@@ -6,11 +6,11 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:18 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:38:11 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:59:39 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
