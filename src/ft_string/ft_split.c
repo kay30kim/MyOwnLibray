@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:29:50 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/22 18:26:49 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:39:08 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	ft_len_str(const char *s, char c)
 	return (len);
 }
 
+void	ft_init(int *i, int *j, int *k)
+{
+	*i = -1;
+	*j = -1;
+	*k = 0;
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
@@ -51,41 +58,28 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (ft_cnt_str(s, c) + 1));
 	if (!res)
 		return (NULL);
-	i = -1;
-	j = 0;
-	k = 0;
-	while (j < ft_cnt_str(s, c))
+	ft_init(&i, &j, &k);
+	while (++j < ft_cnt_str(s, c))
 	{
 		i++;
+		while (s[i] && s[i] == c)
+			i++;
 		res[j] = (char *)malloc(sizeof(char) * (ft_len_str(&s[i], c) + 1));
-		if (!res[j]) // Check for malloc failure
-		{
-			// Free previously allocated memory
-			while (j > 0)
-			{
-				free(res[j - 1]);
-				j--;
-			}
-			free(res);
-			return (NULL); // Return NULL to indicate failure
-		}
+		if (!res[j])
+			return (NULL);
 		k = 0;
 		while (s[i] && s[i] != c)
-		{
-			res[j][k] = s[i];
-			i++;
-		}
+			res[j][k++] = s[i++];
 		res[j][k] = '\0';
-		j++;
 	}
+	res[j] = 0;
 	return (res);
 }
-
+/*
 #include <stdio.h>
-
 int main(void)
 {
-    const char *input = "This is a sample string";
+    const char *input = "   long  space  check  ";
     const char delimiter = ' ';
 
     char **result = ft_split(input, delimiter);
@@ -103,3 +97,4 @@ int main(void)
 
     return 0;
 }
+*/
