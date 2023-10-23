@@ -1,68 +1,34 @@
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I$(INCLUDES)
-NAME		= libft.a
-INCLUDES	= include/
-SRC_DIR		= src/
-SRCS		= $(addprefix ft_is_check/, ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c)
-SRCS		+= $(addprefix ft_memory/, ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c)
-SRCS		+= $(addprefix ft_put/, $(addsuffix .c, ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd))
-SRCS		+= $(addprefix ft_string/, $(addsuffix .c, ft_split ft_strchr ft_strdup ft_striteri ft_strjoin ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr ft_strrchr ft_strtrim ft_substr))
-SRCS		+= ft_other/ft_bzero.c
-SRCS		+= ft_to/ft_atoi.c ft_to/ft_tolower.c ft_to/ft_toupper.c ft_to/ft_itoa.c
-OBJ_DIR		= obj/
-OBJS		= $(addprefix $(OBJ_DIR), $(SRCS:%.c=%.o)) # $(addsuffix .o, $(SRCS))
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I./
+NAME = libft.a
+SRCS_t = ft_is_check/ft_isalnum.c ft_is_check/ft_isalpha.c ft_is_check/ft_isascii.c ft_is_check/ft_isdigit.c ft_is_check/ft_isprint.c\
+	ft_memory/ft_calloc.c ft_memory/ft_memchr.c ft_memory/ft_memcmp.c ft_memory/ft_memcpy.c ft_memory/ft_memmove.c ft_memory/ft_memset.c\
+	ft_other/ft_bzero.c \
+	ft_string/ft_split.c ft_string/ft_strchr.c ft_string/ft_strdup.c ft_string/ft_striteri.c ft_string/ft_strjoin.c\
+	ft_string/ft_strlcat.c ft_string/ft_strlcpy.c ft_string/ft_strlen.c ft_string/ft_strmapi.c ft_string/ft_strncmp.c\
+	ft_string/ft_strnstr.c ft_string/ft_strrchr.c ft_string/ft_strtrim.c ft_string/ft_substr.c\
+	ft_to/ft_atoi.c ft_to/ft_itoa.c ft_to/ft_tolower.c ft_to/ft_toupper.c\
+	ft_put/ft_putchar_fd.c ft_put/ft_putendl_fd.c ft_put/ft_putnbr_fd.c ft_put/ft_putstr_fd.c
+SRCS = $(addprefix src/, $(SRCS_t))
+BONUS_SRCS_t = ft_lst/ft_lstadd_back.c ft_lst/ft_lstadd_front.c ft_lst/ft_lstclear.c ft_lst/ft_lstdelone.c\
+	ft_lst/ft_lstiter.c ft_lst/ft_lstlast.c ft_lst/ft_lstmap.c ft_lst/ft_lstnew.c ft_lst/ft_lstsize.c
+BONUS_SRCS = $(addprefix src/, $(BONUS_SRCS_t))
 
-BONUS_DIR	= src/ft_lst
-BONUS_SRCS	= $(addprefix $(BONUS_DIR)/, $(addsuffix .c, ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize))
-BONUS_OBJS	= $(addprefix $(OBJ_DIR), $(BONUS_SRCS:$(BONUS_DIR)/%.c=%.o))
+OBJS = $(SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
+all: $(NAME)
 
-# $(NAME):	$(OBJ)
-# 			@$(AR) $(NAME) $(OBJ)
-# 			@ranlib $(NAME)
+$(NAME): $(OBJS)
+	ar rc $(NAME) $(OBJS)
 
-all : $(NAME)
-
-$(NAME) : $(OBJS)
-	ar -rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-#	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) libft_main_test.c
-
-$(OBJS) : $(OBJ_DIR)%.o : $(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rc $(NAME) $(BONUS_OBJS) $(OBJS)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJS) $(BONUS_OBJS)
 
-fclean : clean
-	rm -f $(NAME)
+fclean: clean
+	rm -rf $(NAME)
 
-re : fclean all
-
-bonus : fclean $(BONUS_OBJS) $(NAME)
-
-$(BONUS_OBJS) : $(OBJ_DIR)%.o : $(BONUS_DIR)/%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# $(OBJ_DIR)ft_is_check:
-# 	mkdir -p $(OBJ_DIR)ft_is_check
-
-# $(OBJ_DIR)ft_lst:
-# 	mkdir -p $(OBJ_DIR)ft_lst
-
-# $(OBJ_DIR)ft_memory:
-# 	mkdir -p $(OBJ_DIR)ft_memory
-
-# $(OBJ_DIR)ft_other:
-# 	mkdir -p $(OBJ_DIR)ft_other
-
-# $(OBJ_DIR)ft_put:
-# 	mkdir -p $(OBJ_DIR)ft_put
-
-# $(OBJ_DIR)ft_string:
-# 	mkdir -p $(OBJ_DIR)ft_string
-
-# $(OBJ_DIR)ft_to:
-# 	mkdir -p $(OBJ_DIR)ft_to
+re: fclean all

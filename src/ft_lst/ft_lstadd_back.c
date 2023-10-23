@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:32:57 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/22 14:07:39 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:51:22 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,42 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	while (*lst && (*lst)->next)
+	t_list	*ptr;
+
+	if (!new)
+		return ;
+	ptr = *lst;
+	while (ptr && ptr->next)
 	{
-		*lst = (*lst)->next;
+		ptr = ptr->next;
 	}
-	new->next = (*lst)->next;
-	(*lst)->next = new;
+	if (ptr)
+		ptr->next = new;
+	else
+		*lst = new;
 }
+/*
+int	main(void)
+{
+	t_list	*my_list;
+	t_list	**list_ptr;
+	t_list	*current;
+
+	my_list = NULL;
+	list_ptr = &my_list;
+	printf("%p\n",*list_ptr);
+	ft_lstadd_back(list_ptr, ft_lstnew("lore"));
+	printf("%p\n",*list_ptr);
+	ft_lstadd_back(list_ptr, ft_lstnew("lore2"));
+	printf("%p\n",*list_ptr);
+	ft_lstadd_back(list_ptr, ft_lstnew("lore3"));
+	printf("%p\n",*list_ptr);
+	// Print the list
+	current = my_list;
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	return (0);
+}*/
