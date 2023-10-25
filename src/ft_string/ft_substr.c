@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kay <kay@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:32:13 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/25 10:11:02 by kay              ###   ########.fr       */
+/*   Updated: 2023/10/25 11:22:53 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,8 @@ int main()
 	printf("%s\n", ft_substr(str1, 3, 20));
 	return (0);
 }*/
+/*
+most hard part
+if (ft_strlen(s + start) < len)
+	len = ft_strlen(s + start);
+*/

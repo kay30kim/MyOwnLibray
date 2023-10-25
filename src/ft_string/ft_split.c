@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:29:50 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/23 15:39:08 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:19:13 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_cnt_str(const char *s, char c)
 
 	cnt = 0;
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
-		if (s[i++])
+		if (s[i])
 			cnt++;
 		while (s[i] && s[i] != c)
 			i++;
@@ -56,7 +56,7 @@ char	**ft_split(char const *s, char c)
 	int		k;
 
 	res = (char **)malloc(sizeof(char *) * (ft_cnt_str(s, c) + 1));
-	if (!res)
+	if (!res || !s)
 		return (NULL);
 	ft_init(&i, &j, &k);
 	while (++j < ft_cnt_str(s, c))
@@ -97,4 +97,16 @@ int main(void)
 
     return 0;
 }
+*/
+/*
+need to be care about !s
+while (s && s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i]) // -> should not i++
+			cnt++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
 */

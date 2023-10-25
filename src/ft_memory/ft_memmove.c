@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:18 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/23 14:13:00 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:27:47 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,22 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dest;
-	unsigned char	*srcc;
-	size_t			i;
+	char	*dest;
+	char	*srcc;
 
-	if (!dst || !src || !len)
+	dest = (char *)dst;
+	srcc = (char *)src;
+	if (dst == src)
 		return (dst);
-	dest = (unsigned char *)dst;
-	srcc = (unsigned char *)src;
-	if (srcc <= dest && dest <= srcc + len)
+	if (srcc < dest && dest < srcc + len)
 	{
-		i = len + 1;
-		while (--i > 0)
-			dest[i - 1] = srcc[i - 1];
+		while (len--)
+			dest[len] = srcc[len];
 	}
 	else
 	{
-		i = 0;
-		while (i < len)
-		{
-			dest[i] = srcc[i];
-			i++;
-		}
+		while (len--)
+			*dest++ = *srcc++;
 	}
 	return (dst);
 }
@@ -47,11 +41,13 @@ int	main(void)
 {
 	char src[30] = "Hello, World!";
 	char src2[30] = "";
-	printf("%s\n", ft_memmove(src+6, src, 14));
-	printf("%s\n", memmove(src+6, src, 14));
+	printf("%s\n", ft_memmove(0, 0, 0));
+	printf("%s\n", memmove(0, 0, 0));
 	printf("%s\n", ft_memmove(src+6, src2, 0));
 	printf("%s\n", memmove(src+6, src2, 0));
 	printf("%s\n", ft_memmove(src, src, 5));
 	printf("%s\n", memmove(src, src, 5));
 	return (0);
 }*/
+// dst = 0,src = 0 , len = 0 should not be care..
+// unsigned char* (x) char * (o)
