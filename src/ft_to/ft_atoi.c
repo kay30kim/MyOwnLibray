@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:46:53 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/22 16:38:24 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:44:30 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	num = 0;
+	if (!str)
+		return (0);
 	ft_pass(str, &i, &sign);
 	while (str[i] && '0' <= str[i] && str[i] <= '9')
 	{

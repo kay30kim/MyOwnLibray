@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:30:27 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 21:23:47 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:24:35 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
+	if (!f || !s)
+		return ;
 	i = 0;
 	while (s[i])
 	{

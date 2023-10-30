@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:30 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:33:31 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:21:23 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlcpy(char *dst, const char *src, t_size_t dstsize)
 {
 	unsigned long	i;
 
+	if (!dst || !src)
+		return (0);
 	i = 0;
 	if (dstsize != 0)
 	{

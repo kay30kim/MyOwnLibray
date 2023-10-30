@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:11 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/22 14:36:53 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:57:03 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memchr(const void *s, int c, t_size_t n)
 	t_size_t		i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	str = (unsigned char *)s;
 	while (i < n)
 	{

@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:05 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 12:48:33 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:21:48 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*tmp;
 	unsigned int	i;
 
+	if (!s || !f)
+		return (0);
 	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (tmp == 0)
 		return (NULL);

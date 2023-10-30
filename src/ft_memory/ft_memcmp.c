@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:14 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:38:47 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:25:08 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_memcmp(const void *s1, const void *s2, t_size_t n)
 	unsigned char	*str2;
 	t_size_t		i;
 
+	if (!s1 || !s2)
+		return (0);
 	str1 = (unsigned char *)s1;
 	str2 = (unsigned char *)s2;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:16 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:38:37 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:57:23 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memcpy(void *dst, const void *src, t_size_t n)
 	unsigned char	*srcc;
 
 	if (!dst && !src)
-		return (0);
+		return (NULL);
 	i = 0;
 	dest = (unsigned char *)dst;
 	srcc = (unsigned char *)src;

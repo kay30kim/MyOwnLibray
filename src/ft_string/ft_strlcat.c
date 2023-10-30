@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:21:25 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/21 19:34:39 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:21:12 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	j;
 
+	if (!dst || !src)
+		return (0);
 	i = 0;
 	while (i < dstsize && dst[i])
 	{

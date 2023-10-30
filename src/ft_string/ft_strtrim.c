@@ -6,7 +6,7 @@
 /*   By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:52 by kyung-ki          #+#    #+#             */
-/*   Updated: 2023/10/22 18:13:30 by kyung-ki         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:22:43 by kyung-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_c_in_set(char c, char const *set)
 {
 	int	i;
 
+	if (!set)
+		return (0);
 	i = 0;
 	while (set[i])
 	{
