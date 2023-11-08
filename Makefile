@@ -1,67 +1,114 @@
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I$(INCLUDES)
-NAME		= libft.a
-INCLUDES	= ./
-SRC_DIR		= src/
-SRCS		= $(addprefix ft_is_check/, ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c)
-SRCS		+= $(addprefix ft_memory/, ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_bzero.c)
-SRCS		+= $(addprefix ft_put/, $(addsuffix .c, ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd))
-SRCS		+= $(addprefix ft_string/, $(addsuffix .c, ft_split ft_strchr ft_strdup ft_striteri ft_strjoin ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr ft_strrchr ft_strtrim ft_substr))
-SRCS		+= ft_to/ft_atoi.c ft_to/ft_tolower.c ft_to/ft_toupper.c ft_to/ft_itoa.c
-OBJ_DIR		= obj/
-OBJS		= $(addprefix $(OBJ_DIR), $(SRCS:%.c=%.o)) # $(addsuffix .o, $(SRCS))
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kyung-ki <kyung-ki@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/08 13:13:18 by kyung-ki          #+#    #+#              #
+#    Updated: 2023/11/08 13:14:52 by kyung-ki         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-BONUS_DIR	= src/ft_lst
-BONUS_SRCS	= $(addprefix $(BONUS_DIR)/, $(addsuffix .c, ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize))
-BONUS_OBJS	= $(addprefix $(OBJ_DIR), $(BONUS_SRCS:$(BONUS_DIR)/%.c=%.o))
+#Standard
+
+NAME		=	libft.a
+INCLUDES	=	include/
+SRC_DIR 	=	src/
+OBJ_DIR		=	obj/
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra -I
+RM			=	rm -f
+AR			=	ar rcs
+
+#Colors
+
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
+
+#Sources
+
+FTIS_DIR	=	ft_is_check/
+FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
+
+FTMEM_DIR	=	ft_memory/
+FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
+
+FTPUT_DIR	=	ft_put/
+FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
+
+FTTO_DIR	=	ft_to/
+FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
+
+FTSTR_DIR	=	ft_string/
+FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
+				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
+				ft_strnstr ft_strrchr ft_strtrim ft_substr
+
+FTLST_DIR	=	ft_lst/
+FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
+				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
+
+SRC_FILES+=$(addprefix $(FTIS_DIR),$(FTIS))
+SRC_FILES+=$(addprefix $(FTMEM_DIR),$(FTMEM))
+SRC_FILES+=$(addprefix $(FTPUT_DIR),$(FTPUT))
+SRC_FILES+=$(addprefix $(FTTO_DIR),$(FTTO))
+SRC_FILES+=$(addprefix $(FTSTR_DIR),$(FTSTR))
+BONUS_FILES+=$(addprefix $(FTLST_DIR),$(FTLST))
+
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
 
 
-# $(NAME):	$(OBJ)
-# 			@$(AR) $(NAME) $(OBJ)
-# 			@ranlib $(NAME)
+###
 
-all : $(NAME)
+OBJF		=	.cache_exists
 
-$(NAME) : $(OBJS)
-	ar -rc $(NAME) $(OBJS)
-#	@ranlib $(NAME) # optimization 
-#	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) libft_main_test.c
+all:		$(NAME)
 
-$(OBJS) : $(OBJ_DIR)%.o : $(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME):	$(OBJ)
+			@$(AR) $(NAME) $(OBJ)
+			@ranlib $(NAME)
+			@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIR)$(FTIS_DIR)
+			@mkdir -p $(OBJ_DIR)$(FTMEM_DIR)
+			@mkdir -p $(OBJ_DIR)$(FTPUT_DIR)
+			@mkdir -p $(OBJ_DIR)$(FTTO_DIR)
+			@mkdir -p $(OBJ_DIR)$(FTSTR_DIR)
+			@mkdir -p $(OBJ_DIR)$(FTLST_DIR)
+
+bonus:		$(BONUS_OBJ)
+			@$(AR) $(NAME) $(BONUS_OBJ)
+			@echo "$(GREEN)Libft bonus compiled!$(DEF_COLOR)"
 
 clean:
-	rm -rf $(OBJ_DIR)
+			@$(RM) -rf $(OBJ_DIR)
+			@$(RM) -f $(OBJF)
+			@echo "$(BLUE)Libft objects files cleaned!$(DEF_COLOR)"
 
-fclean : clean
-	rm -f $(NAME)
+fclean:		clean
+			@$(RM) -f $(NAME)
+			@echo "$(CYAN)Libft executable files cleaned!$(DEF_COLOR)"
 
-re : fclean all
+re:			fclean all
+			@echo "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
 
-bonus : $(OBJS) $(BONUS_OBJS) $(NAME)
+norm:
+			@norminette $(SRC) $(INCLUDES) | grep -v Norme -B1 || true
 
-$(BONUS_OBJS) : $(OBJ_DIR)%.o : $(BONUS_DIR)/%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# $(OBJ_DIR)ft_is_check:
-# 	mkdir -p $(OBJ_DIR)ft_is_check
-
-# $(OBJ_DIR)ft_lst:
-# 	mkdir -p $(OBJ_DIR)ft_lst
-
-# $(OBJ_DIR)ft_memory:
-# 	mkdir -p $(OBJ_DIR)ft_memory
-
-# $(OBJ_DIR)ft_other:
-# 	mkdir -p $(OBJ_DIR)ft_other
-
-# $(OBJ_DIR)ft_put:
-# 	mkdir -p $(OBJ_DIR)ft_put
-
-# $(OBJ_DIR)ft_string:
-# 	mkdir -p $(OBJ_DIR)ft_string
-
-# $(OBJ_DIR)ft_to:
-# 	mkdir -p $(OBJ_DIR)ft_to
+.PHONY:		all clean fclean re norm
